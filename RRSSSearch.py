@@ -15,34 +15,72 @@ class bcolors:
 def bitbucket(username):
     url = "https://bitbucket.org/" + username + "/"
     request = urllib.request.Request(url)
-    parse(request,username)
+    try:
+        parse(request,username)
+    except urllib.error.URLError :
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+    except UnicodeError:
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+
 def github(username):
     url = "https://github.com/" + username + "/"
     request = urllib.request.Request(url)
     try:
         parse(request,username)
-    except urllib.error.URLError:
-        print("Fail in the url, Probably this page cant has a usernames whit this characters (/ , _ . -)")
+    except urllib.error.URLError :
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+    except UnicodeError:
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+
 def twitter(username):
     url = "https://twitter.com/" + username + "/"
     request = urllib.request.Request(url)
-    parse(request,username)
+    try:
+        parse(request,username)
+    except urllib.error.URLError :
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+    except UnicodeError:
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+
 def instagram(username):
     url = "https://instagram.com/" + username + "/"
     request = urllib.request.Request(url)
-    parse(request,username)
+    try:
+        parse(request,username)
+    except urllib.error.URLError :
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+    except UnicodeError:
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
 
 def facebook(username):
     url = "http://facebook.com/" + username + "/"
     request = urllib.request.Request(url)
-    parse(request,username)
+    try:
+        parse(request,username)
+    except urllib.error.URLError :
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+    except UnicodeError:
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
 
 def tumblr(username):
     url = "https://" + username + ".tumblr.com"
     request = urllib.request.Request(url)
     try:
         parse(request,username)
-    except urllib.error.URLError:
+    except urllib.error.URLError :
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
+    except UnicodeError:
         print(bcolors.FAIL + url)
         print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
 
