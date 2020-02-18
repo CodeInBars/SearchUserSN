@@ -19,7 +19,10 @@ def bitbucket(username):
 def github(username):
     url = "https://github.com/" + username + "/"
     request = urllib.request.Request(url)
-    parse(request,username)
+    try:
+        parse(request,username)
+    except urllib.error.URLError:
+        print("Fail in the url, Probably this page cant has a usernames whit this characters (/ , _ . -)")
 def twitter(username):
     url = "https://twitter.com/" + username + "/"
     request = urllib.request.Request(url)
@@ -37,7 +40,11 @@ def facebook(username):
 def tumblr(username):
     url = "https://" + username + ".tumblr.com"
     request = urllib.request.Request(url)
-    parse(request,username)
+    try:
+        parse(request,username)
+    except urllib.error.URLError:
+        print(bcolors.FAIL + url)
+        print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
 
 # process the request and capture the response code
 def middleware(request, username):
@@ -70,6 +77,6 @@ print("Checking for availability of '" + username + "', please wait...")
 facebook(username)
 twitter(username)
 instagram(username)
-github(username)
+github(username) 
 tumblr(username)
 bitbucket(username)
