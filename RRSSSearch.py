@@ -1,3 +1,5 @@
+from bs4 import BeautifulSoup
+import request
 import urllib.request
 import sys
 # define ANSI escape sequences for colored output
@@ -12,6 +14,19 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 # a function for each site, which creates the request according to the username
+
+def whatsapp(number):
+    url = "https://api.whatsapp.com/send?phone=" + number + "/"
+    html_page = urllib.request.urlopen(url)
+    soup = BeautifulSoup(html_page, "lxml")
+    gButton = soup.find('div', attrs={"class": "_whatsapp_www__block_action"})
+    r = gButton is None
+    if r:
+        print(bcolors.OKGREEN + url + ": 404: Available" + bcolors.ENDC)
+    else:    
+        print(bcolors.FAIL + url + ": 200: Already Exists" + bcolors.ENDC)
+
+
 def bitbucket(username):
     url = "https://bitbucket.org/" + username + "/"
     request = urllib.request.Request(url)
@@ -107,10 +122,9 @@ def parse(request, username):
         # printout(response, GREEN)
         print(bcolors.OKGREEN + request.get_full_url() + ": 404: Available" + bcolors.ENDC)
 
-# ask for a username, instead of an argument
-# username = raw_input("Username to check: ")
-# take username as a system argument
+
 username = input("Username to check: ")
+number = input("Number to check: ")
 print("Checking for availability of '" + username + "', please wait...")
 facebook(username)
 twitter(username)
@@ -118,3 +132,4 @@ instagram(username)
 github(username) 
 tumblr(username)
 bitbucket(username)
+whatsapp(number)
