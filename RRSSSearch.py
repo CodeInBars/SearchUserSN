@@ -122,7 +122,7 @@ def parse(request, username):
         # printout(response, GREEN)
         print(bcolors.OKGREEN + request.get_full_url() + ": 404: Available" + bcolors.ENDC)
 
-
+# Menu
 username = input("Username to check: ")
 number = input("Number to check: ")
 print("Checking for availability of '" + username + "', please wait...")
