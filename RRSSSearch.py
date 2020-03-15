@@ -2,6 +2,10 @@ from bs4 import BeautifulSoup
 import request
 import urllib.request
 import sys
+import phonenumbers
+from phonenumbers import geocoder
+from phonenumbers import carrier
+
 # define ANSI escape sequences for colored output
 class bcolors:
     HEADER = '\033[95m'
@@ -99,6 +103,13 @@ def tumblr(username):
         print(bcolors.FAIL + url)
         print(bcolors.FAIL + "Fail in the url, Probably this page can't have a usernames whit this characters (/ , _ . -)")
 
+def geoCach(number):
+    chNumber = (phonenumbers.parse(number, 'CH'))
+    sNum = phonenumbers.parse(number, 'RO')
+    print(geocoder.description_for_number(chNumber, "en"))
+    print(carrier.name_for_number(sNum, "en"))
+
+
 # process the request and capture the response code
 def middleware(request, username):
     try:
@@ -133,3 +144,4 @@ github(username)
 tumblr(username)
 bitbucket(username)
 whatsapp(number)
+geoCach(number)
